@@ -22,7 +22,7 @@ export default function Home() {
   }
 
   return (
-    <main>
+    <main className='flex flex-col items-center'>
       <div className="m-9">
         <h1 className="text-3xl font-bold">Random cats!</h1>
         <button onClick={addNewCat}>Add a random cat</button>
