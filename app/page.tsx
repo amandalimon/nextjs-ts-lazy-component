@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react'
 import { MouseEventHandler } from 'react';
-import { RandomCat } from "./components/RandomCat";
+import { LazyImage } from "./components/RandomCat";
 
 type ImageItem = { id: string, url: string }
 
@@ -28,7 +28,12 @@ export default function Home() {
         <button onClick={addNewCat}>Add a random cat</button>
         {images.map(({ id, url }) => (
           <div className='my-9' key={id}>
-            <RandomCat image={url} />
+            <LazyImage
+              src={url}
+              width={350}
+              height="auto"
+              onClick={() => console.log('meow')}
+            />
           </div>
         ))}
 

@@ -1,12 +1,17 @@
 'use client';
 import { useRef, useEffect, useState } from "react";
+import { ImgHTMLAttributes } from "react";
 
-type Props = { image: string };
+type LazyImageProps = { src: string };
 
-export const RandomCat = ({ image }: Props): JSX.Element => {
+type ImageNative = ImgHTMLAttributes<HTMLImageElement>
+
+type Props = LazyImageProps & ImageNative
+
+export const LazyImage = ({ src, ...imgProps }: Props): JSX.Element => {
     const node = useRef<HTMLImageElement>(null);
 
-    const [src, setSrc] = useState(
+    const [currentSrc, setCurrentSrc] = useState(
         "https://placehold.co/600x400/cadetblue/white/?text=generating+a+cat&font=oswald"
     );
 
@@ -15,11 +20,10 @@ export const RandomCat = ({ image }: Props): JSX.Element => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    setSrc(image)
+                    setCurrentSrc(src)
                 }
             })
         }, { threshold: 1.0 })
-
         // observe node
         if (node.current) {
             observer.observe(node.current);
@@ -29,9 +33,9 @@ export const RandomCat = ({ image }: Props): JSX.Element => {
         return () => {
             observer.disconnect();
         }
-    }, [image]);
+    }, [src]);
 
     return (
-        <img ref={node} width={350} height="auto" src={src} />
+        <img ref={node} src={currentSrc} {...imgProps} />
     )
 }
