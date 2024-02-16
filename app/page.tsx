@@ -2,8 +2,9 @@
 import { useState } from 'react'
 import { MouseEventHandler } from 'react';
 import { LazyImage } from "./components/RandomCat";
+import { random } from "lodash"
 
-const generateId = () => Math.random().toString(36).substr(2, 9)
+const generateId = () => random(1, 1323);
 
 export default function Home() {
   const [images, setImages] = useState<Array<ICatImageItem>>([]);

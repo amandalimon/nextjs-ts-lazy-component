@@ -1,1 +1,1 @@
-type ICatImageItem = { id: string, url: string }
+type ICatImageItem = { id: number, url: string }
