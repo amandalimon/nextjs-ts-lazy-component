@@ -3,15 +3,13 @@ import { useState } from 'react'
 import { MouseEventHandler } from 'react';
 import { LazyImage } from "./components/RandomCat";
 
-type ImageItem = { id: string, url: string }
-
 const generateId = () => Math.random().toString(36).substr(2, 9)
 
 export default function Home() {
-  const [images, setImages] = useState<Array<ImageItem>>([]);
+  const [images, setImages] = useState<Array<ICatImageItem>>([]);
 
   const addNewCat: MouseEventHandler<HTMLButtonElement> = () => {
-    const newImageItem: ImageItem = {
+    const newImageItem: ICatImageItem = {
       id: generateId(),
       url: `https://cataas.com/cat?${generateId()}`
     }

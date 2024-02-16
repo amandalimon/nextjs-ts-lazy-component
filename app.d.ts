@@ -1,0 +1,1 @@
+type ICatImageItem = { id: string, url: string }
