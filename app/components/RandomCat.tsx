@@ -12,7 +12,7 @@ export const LazyImage = ({ src, ...imgProps }: Props): JSX.Element => {
     const node = useRef<HTMLImageElement>(null);
 
     const [currentSrc, setCurrentSrc] = useState(
-        "https://placehold.co/600x400/cadetblue/white/?text=generating+a+cat&font=oswald"
+        "https://placehold.co/300/lightskyblue/white/?text=generating+a+cat&font=oswald"
     );
 
     useEffect(() => {
